@@ -17,9 +17,9 @@ import java.net.URL;
 
 public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObject> {
 
-    private String httpUrl;
     private JSONObject myJSONObject;
     private MyAdapter myAdapter;
+    private String httpUrl;
 
     public AsyncFlickrJSONDataForList(String httpUrl, MyAdapter myAdapter){
         this.httpUrl = httpUrl;
@@ -47,7 +47,6 @@ public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObje
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return myJSONObject;
     }
 
@@ -60,7 +59,6 @@ public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObje
                 Log.i("TE", urlImage);
                 myAdapter.dd(urlImage);
                 Log.i("JFL", "Adding to adapter url : " + urlImage);
-
             }
             myAdapter.notifyDataSetChanged();
         } catch (JSONException e) {

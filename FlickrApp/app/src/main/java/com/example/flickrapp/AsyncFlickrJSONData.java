@@ -28,12 +28,12 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
         URL url =null;
         try {
             url = new URL(this.httpUrl);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();//make urlconnection with the url
             try {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                String s = readStream(in);
+                String s = readStream(in);//get the json object
                 Log.i("JFL", s);
-                myJSONObject = new JSONObject(s);
+                myJSONObject = new JSONObject(s);//set you json object
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -52,9 +52,9 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject myJSONObject) {
         try {
-            String urlImage = myJSONObject.getJSONArray("items").getJSONObject(0).getJSONObject("media").getString("m");
+            String urlImage = myJSONObject.getJSONArray("items").getJSONObject(0).getJSONObject("media").getString("m");//get one image at the position 0
             Log.i("TE", urlImage);
-            AsyncBitmapDownloader bmdownloader = new AsyncBitmapDownloader(urlImage);
+            AsyncBitmapDownloader bmdownloader = new AsyncBitmapDownloader(urlImage);//call the method which set the image in the app
             bmdownloader.execute();
         } catch (JSONException e) {
             e.printStackTrace();

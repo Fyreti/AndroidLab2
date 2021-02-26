@@ -26,9 +26,7 @@ public class AsyncBitmapDownloader extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(String... strings) {
-
         URL url = null;
-
         try {
             url = new URL(this.httpUrl);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -39,13 +37,12 @@ public class AsyncBitmapDownloader extends AsyncTask<String, Void, Bitmap> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return bm;
     }
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        MainActivity.setRes(bm);
+        MainActivity.setRes(bm);//set the image in tha app
 
     }
 }

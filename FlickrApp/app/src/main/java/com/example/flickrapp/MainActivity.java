@@ -4,17 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button Getimage;
+    private Button GitImage;
     private Button GoToList;
     private static ImageView img;
     public static Bitmap bm;
@@ -23,28 +20,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         img = (ImageView)findViewById(R.id.image);
-        GoToList = (Button)findViewById(R.id.GoToList);
-        Getimage = (Button)findViewById(R.id.Getimage);
-
-        Getimage.setOnClickListener(new GetImageOnClickListener(){
+        GoToList = (Button)findViewById(R.id.GoToList);//Bouton pour allez sur la vue de la liste d'image
+        GitImage = (Button)findViewById(R.id.Getimage);//bouton pour avoir l'image aléatoire
+        GitImage.setOnClickListener(new GetImageOnClickListener(){
             @Override
             public void onClick(View v) {
                 super.onClick(v);
             }
         });
-
         GoToList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent listPage = new Intent(MainActivity.this, ListActivity.class);
-                startActivity(listPage);
+                startActivity(listPage);//lancé une nouvelle activitée (page) pour afficher la liste d'image
             }
         });
     }
 
     public static void setRes(Bitmap bm){
         img.setImageBitmap(bm);
-    }
+    }//set l'image quand on appuis sur Getimage
 }
